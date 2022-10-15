@@ -1,0 +1,124 @@
+var images =['/themes/nbkc/assets/images/about/ogorman_simone.jpg' , '/themes/nbkc/assets/images/about/williams_kathy.jpg','/themes/nbkc/assets/images/about/downer_blake.jpg','/themes/nbkc/assets/images/about/ulrich_eric.jpg'];
+
+function slideshow(options) {
+    var defaults ={
+        fadeInSpeed:1000,
+        fadeOutSpeed:750,
+        slideLength:4000
+    }
+    //merge options with defaults
+    var settings= $.extend({},defaults,options);
+    //get a reference to our image holder
+    var $slide = $('#slide');
+    //initialize the slide index
+    var slideIndex=0;
+    //begin the slideshow
+    nextSlide();
+    
+    function nextSlide(){
+        if ($slide.length === 0) return;
+        //load the new image...
+        $slide[0].src = images[slideIndex];
+        //show it
+        $slide.fadeIn(settings.fadeInSpeed,function(){
+            setTimeout(function(){
+                $slide.fadeOut(settings.fadeOutSpeed,nextSlide);
+                //increment index and reset to 0 when we have reached the end
+               slideIndex = ++slideIndex % images.length;
+            },settings.slideLength); 
+        });
+    }
+}
+
+$(function(){
+    //optionally pass in custom settings, or just run normal to use defaults...
+    slideshow();    
+});
+
+$(document).ready(function(){
+    $('.service-info').hide();
+    $('.read-more').click(function(){
+  		$(this).siblings('.service-info').show();
+  		$(this).hide();
+  		$(this).parent().find('.read-less').show();
+    });
+    $('.read-less').click(function(){
+    	$(this).siblings('.service-info').hide();
+    	$(this).hide();
+      $(this).parent().find('.read-more').show();
+    });
+    // Toggle plus/minus on business checking account page
+    $('.business-checking-show-more').click(function(clicked) {
+      var $plusSign = this;
+      $($plusSign).next('.benefits-show-more-content').slideToggle(function(toggle) {
+        $($plusSign).toggleClass('plus');
+        $($plusSign).toggleClass('minus');
+      });
+    });
+
+    $('.employee-showcase-wrapper').unslider({
+        autoplay: false,
+        arrows: true,
+        infinite: true,
+        keys: false,
+        nav: false,
+        speed: 500
+    });
+});
+
+if(document.getElementsByTagName('video')[0] !== undefined) {
+  document.getElementsByTagName('video')[0].volume = 0.0;
+}
+
+// Tab functionality
+var aboutTabs = $('.about-culture-tabs').find('a');
+var tabbedContent = $('.about-culture-tab-content').find('section');
+
+aboutTabs.matchHeight({
+    target: $('body > section.about-culture-tabs > div > ul > li.active > a')
+});
+aboutTabs.on('click', function(e) {
+    if ($(this).parent().hasClass('active') || ! $(this).data('target')) {
+        return;
+    }
+
+    aboutTabs.parent().removeClass('active');
+    $(this).parent().addClass('active');
+    tabbedContent.removeClass('active');
+    $('.about-culture-' + $(this).data('target')).addClass('active');
+
+    e.preventDefault();
+});
+
+
+// Tab functionality
+var aboutTabs = $('.about-culture-tabs').find('a');
+var tabbedContent = $('.about-culture-tab-content').find('section');
+
+aboutTabs.matchHeight({
+    target: $('body > section.about-culture-tabs > div.container.new-border > ul > li.active > a > div.tab-size')
+});
+aboutTabs.on('click', function(e) {
+    if ($(this).parent().hasClass('active') || ! $(this).data('target')) {
+        return;
+    }
+
+    aboutTabs.parent().removeClass('active');
+    $(this).parent().addClass('active');
+    tabbedContent.removeClass('active');
+    $('.about-culture-' + $(this).data('target')).addClass('active');
+
+    e.preventDefault();
+});
+
+$('.play-video').videoModal();
+
+// Employee Showcase
+$('.employee-showcase-video-link').videoModal();
+
+$('#employee-showcase-video-modal').on('show.bs.modal', function (event, parentEvent) {
+    var href = $(parentEvent.target);
+    var videoSrc = href.data('video');
+    var modal = $(this);
+    modal.find('.showcase-video-src').attr('src', videoSrc);
+});

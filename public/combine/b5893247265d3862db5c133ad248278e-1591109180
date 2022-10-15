@@ -1,0 +1,24 @@
+document.addEventListener('DOMContentLoaded', function() {
+  var testimonialCarousel = $('#myCarousel');
+  var testimonialIndex = 0;
+  var prevTestimonialSummary = document.getElementById('prev-testimonial-summary');
+  var nextTestimonialSummary = document.getElementById('next-testimonial-summary');
+
+  // create 2 duplicate indexes on both ends in
+  // the case that testimonialIndex is 0 or 2
+  var testimonialSummaryMap = {
+    '-1': 'words from Griffin',
+    '0': 'words from Propair',
+    '1': 'words from Greenlight',
+    '2': 'words from Griffin',
+    '3': 'words from Propair'
+  };
+
+
+  // update the carousel control summaries after the new slide is in place
+  testimonialCarousel.on('slid.bs.carousel', function(event) {
+    testimonialIndex = Number(event.relatedTarget.dataset.itemIndex);
+    prevTestimonialSummary.innerHTML = testimonialSummaryMap[testimonialIndex - 1];
+    nextTestimonialSummary.innerHTML = testimonialSummaryMap[testimonialIndex + 1];
+  });
+});

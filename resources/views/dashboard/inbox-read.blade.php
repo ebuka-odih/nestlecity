@@ -1,0 +1,161 @@
+@extends('dashboard.layout.app')
+@section('content')
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="index.html" class="brand-logo">
+                <img class="logo-abbr" src="images/logo.png" alt="">
+                <img class="logo-compact" src="images/logo-text.png" alt="">
+                <img class="brand-title" src="images/logo-text.png" alt="">
+            </a>
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+    @include('dashboard.layout.header')
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+    @include('dashboard.layout.sidebar')
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+<div class="content-body">
+            <div class="container-fluid">
+                <div class="page-titles">
+					<h4>Read</h4>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Inbox</a></li>
+						<li class="breadcrumb-item active"><a href="javascript:void(0)">Read</a></li>
+					</ol>
+                </div>
+                <!-- row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="email-left-box px-0 mb-3">
+                                    <div class="mail-list mt-4">
+                                        <a href="{{ route('user.messages') }}" class="list-group-item active"><i
+                                                class="fa fa-inbox font-18 align-middle mr-2"></i> Inbox <span
+                                                class="badge badge-primary badge-sm float-right">{{ auth()->user()->unread_msg() }}</span> </a>
+                                        <a href="{{ route('user.read') }}" class="list-group-item">
+                                            <i class="fa fa-star font-18 align-middle mr-2"></i>Read Messages<span
+                                                class="badge badge-danger text-white badge-sm float-right">{{ auth()->user()->read_msg() }}</span>
+                                        </a>
+                                    </div>
+
+                                </div>
+                                <div class="email-right-box ml-0 ml-sm-4 ml-sm-0">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="right-box-padding">
+
+                                                <div class="read-content">
+                                                    <div class="media mb-2 mt-3">
+                                                        <div class="media-body"><span class="pull-right"></span>
+                                                            <h3 class="my-1 text-primary">{{ $msg_details->title }}</h3>
+
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="media mb-2 mt-3">
+                                                        <div class="media-body"><span class="pull-right">{{ date('d/M/y h:i A', strtotime( $msg_details->created_at)) }}</span>
+
+                                                            <p class="read-content-email">
+                                                                From: user-fnb.com</p>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="read-content-body">
+                                                      <p class="mb-2">
+                                                          {{ $msg_details->message }}
+                                                        </p>
+                                                    </div>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+    @include('dashboard.layout.footer')
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+@endsection

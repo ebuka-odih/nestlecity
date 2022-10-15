@@ -1,0 +1,5 @@
+//console.log('KJE Custom...');
+// console.log(KJE.CommandButtons);
+// Update command buttons
+//KJE.CommandButtons = "<div id='KJECommandButtons'><input type=button class=KJECommandButton  name=KJECalculate id=KJECalculate value='**LBL_CALCULATE**' /><input **VIEWREPORT** class=KJECommandButton  id=KJEViewReport name=KJEViewReport value='**LBL_VIEWREPORT**' /><a class='KJECommandButton KJEHideButton' href='/home-loans/get-prequalified'>Apply Online</a></div>"
+KJE.CommandButtons = "<div id='KJEFixed'><div id='KJECommandButtons'><input type=button class=KJECommandButton  name=KJECalculate id=KJECalculate value='**LBL_CALCULATE**' /><input **VIEWREPORT** class=KJECommandButton  id=KJEViewReport name=KJEViewReport value='**LBL_VIEWREPORT**' /><input onclick=\"window.location.href='https://apply-dev.nbkc.com/'\" type=button class=KJECommandButton  id=KJEApplyOnline name=KJEApplyOnline value='Apply Online' /></div><div id='KJEScrollSticky' style='display:none;'></div></div>";
