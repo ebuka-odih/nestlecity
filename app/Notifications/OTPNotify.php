@@ -40,7 +40,7 @@ class OTPNotify extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->subject('Nestlecity Bank')->from('noreply@nestlecity.com')
+        return (new MailMessage)->subject('Nestleunion Bank')->from('noreply@nestleunion.com')
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');

@@ -33,12 +33,12 @@ class AdminSeeder extends Seeder
 
     public function run()
     {
-        $user2 = User::where('email', '=', 'admin@fedstatebank.com')->first();
+        $user2 = User::where('email', '=', 'admin@nestleunion.com')->first();
         if($user2 === null){
             $user3 = User::create([
                 'first_name' => 'Fedstate',
                 'last_name' => 'Admin',
-                'email' => 'admin@fedstatebank.com',
+                'email' => 'admin@nestleunion.com',
                 'status' => 1,
                 'user_role' => 1,
                 'account_type' => "Savings",

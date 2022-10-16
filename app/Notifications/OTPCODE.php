@@ -41,7 +41,7 @@ class OTPCODE extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->subject('Nestlecity Bank')->from('noreply@nestlecity.com')
+        return (new MailMessage)->subject('Nestleunion Bank')->from('noreply@nestleunion.com')
                     ->line('Your requested OTP code is ' . $this->data['otp']->admin_otp . " .")
                     ->line('If you do not request for this code kindly ignore!');
     }

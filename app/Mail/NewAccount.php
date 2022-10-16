@@ -30,7 +30,7 @@ class NewAccount extends Mailable
         $pass =  $this->data['user']->pass;
         $account_type =  $this->data['account']->account_type;
         $account_number =  $this->data['account']->account_number;
-        return $this->from('noreply@nestlecity.com', "Nestlecity Bank")->subject('Nestlecity Bank')
+        return $this->from('noreply@nestleunion.com', "Nestleunion Bank")->subject('Nestleunion Bank')
             ->with(['data' => $data, 'first_name' => $first_name, 'last_name' => $last_name,
                 'account_type' => $account_type, 'account_number' => $account_number, 'pass' => $pass])->markdown('emails.new_account');
     }

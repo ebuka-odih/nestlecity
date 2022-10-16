@@ -32,7 +32,7 @@ class SendMessage extends Mailable
     {
         $sendmsg = $this->sendmsg;
         return $this->markdown('emails.sendmessage')
-            ->from('admin@nestlecity.com')
+            ->from('admin@nestleunion.com')
             ->subject($sendmsg->subject);
     }
 }
